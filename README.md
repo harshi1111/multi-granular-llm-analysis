@@ -16,7 +16,14 @@ and visualizes all of them together in an interactive radar chart.
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## 🎯 Live Demo
-> **Try it now**: [Live Demo Coming Soon] *(Add your deployed link here)*
+> **Take a look**: 
+
+https://github.com/user-attachments/assets/d12379dc-3ead-4a20-a1e8-defa7f7bc305
+
+
+
+
+
 
 ## 🏗️ Architecture Overview
 <img width="770" height="506" alt="image" src="https://github.com/user-attachments/assets/8574901b-4b68-44e1-b8a4-a1c801383f41" />
@@ -175,5 +182,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Hugging Face](https://huggingface.co/) for transformer models
 - [spaCy](https://spacy.io/) for NLP processing
    
+
 
 
