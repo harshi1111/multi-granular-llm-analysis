@@ -19,8 +19,8 @@ and visualizes all of them together in an interactive radar chart.
 > **Try it now**: [Live Demo Coming Soon] *(Add your deployed link here)*
 
 ## 🏗️ Architecture Overview
+<img width="770" height="506" alt="image" src="https://github.com/user-attachments/assets/8574901b-4b68-44e1-b8a4-a1c801383f41" />
 
-<img width="770" height="506" alt="image" src="https://github.com/user-attachments/assets/caad55fe-94b8-4938-9f04-391e26611e3f" />
 
 
 
@@ -175,4 +175,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Hugging Face](https://huggingface.co/) for transformer models
 - [spaCy](https://spacy.io/) for NLP processing
    
+
 
