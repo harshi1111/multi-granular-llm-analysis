@@ -19,7 +19,10 @@ and visualizes all of them together in an interactive radar chart.
 > **Try it now**: [Live Demo Coming Soon] *(Add your deployed link here)*
 
 ## 🏗️ Architecture Overview
-![alt text](<_- visual selection.png>)
+
+<img width="770" height="506" alt="image" src="https://github.com/user-attachments/assets/caad55fe-94b8-4938-9f04-391e26611e3f" />
+
+
 
 ## 🚀 What this project does
 
@@ -104,6 +107,7 @@ and visualizes all of them together in an interactive radar chart.
 | **Performance** | Threading, Task Queues, Response Chunking |
 
 ## 📝 Project Structure
+```
 multi_granular_llm_analysis/
 ├── app.py # Main Flask application
 ├── src/ # Core analysis modules
@@ -117,20 +121,10 @@ multi_granular_llm_analysis/
 ├── static/ # CSS, JS, assets
 ├── results/ # Analysis outputs
 └── requirements.txt # Dependencies
-
-## 🤝 Contributing
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-- [Groq](https://groq.com/) for providing free API access
-- [Hugging Face](https://huggingface.co/) for transformer models
-- [spaCy](https://spacy.io/) for NLP processing
+```
 
 ## 🛠️ Installation
-
+```bash
 # Clone the repository
 git clone <repository-url>
 cd multi_granular_llm_analysis
@@ -155,10 +149,11 @@ cp .env.template .env
 # Edit .env and add your Groq API key
 
 ## ▶️ Running the web app
-```bash
+
 From the project root
 python app.py
 ```
+
 Then open `http://localhost:5000` in your browser.
 
 1. Type a prompt (e.g., “Assume Australia is in Europe. Explain its climate.”)  
@@ -169,4 +164,15 @@ Then open `http://localhost:5000` in your browser.
    - Factual warnings if the answer contradicts the knowledge base  
    - A radar plot showing how good/bad the answer is at each level.
 
+## 🤝 Contributing
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+- [Groq](https://groq.com/) for providing free API access
+- [Hugging Face](https://huggingface.co/) for transformer models
+- [spaCy](https://spacy.io/) for NLP processing
    
+
