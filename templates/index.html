@@ -1,0 +1,238 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero-section" id="analyzer">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-line">Decode</span>
+                    <span class="title-line">LLM <span class="title-highlight">Hallucinations</span></span>
+                    <span class="title-line">in Real-Time</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Multi-granular analysis of AI responses at <span class="highlight">token</span>, 
+                    <span class="highlight">sentence</span>, and <span class="highlight">reasoning</span> levels
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Token-Level</h3>
+                            <p>Lexical stability & pattern analysis</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-text-height"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Sentence-Level</h3>
+                            <p>Semantic coherence & consistency</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Reasoning-Level</h3>
+                            <p>Logical consistency & inference validation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Analysis Panel -->
+            <div class="analysis-panel">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <i class="fas fa-rocket"></i>
+                        <h2>Real-Time Analysis</h2>
+                    </div>
+                    <div class="panel-badge">
+                        <span class="badge">Live</span>
+                        <span class="badge badge-success">AI-Powered</span>
+                    </div>
+                </div>
+                
+                <div class="panel-content">
+                    <!-- Prompt Input -->
+                    <div class="input-section">
+                        <label for="promptInput" class="input-label">
+                            <i class="fas fa-keyboard"></i> Enter Your Prompt
+                        </label>
+                        <div class="textarea-wrapper">
+                            <textarea id="promptInput" placeholder="Ask anything... 
+Example: 'Explain quantum computing to a 10-year-old' 
+Or: 'What are the main causes of climate change?'" rows="4"></textarea>
+                            <div class="textarea-actions">
+                                <button class="action-btn" id="clearPrompt">
+                                    <i class="fas fa-eraser"></i>
+                                </button>
+                                <button class="action-btn" id="samplePrompt">
+                                    <i class="fas fa-magic"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Model Selection -->
+                    <div class="model-section">
+                        <label class="section-label">
+                            <i class="fas fa-robot"></i> Select AI Model
+                        </label>
+                        <div class="model-grid" id="modelGrid">
+                            <!-- Models will be loaded here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="action-section">
+                        <button class="analyze-btn" id="analyzeBtn">
+                            <span class="btn-content">
+                                <i class="fas fa-play-circle"></i>
+                                <span>Start Analysis</span>
+                            </span>
+                            <span class="btn-loader" id="btnLoader">
+                                <div class="loader-dots">
+                                    <div class="dot"></div>
+                                    <div class="dot"></div>
+                                    <div class="dot"></div>
+                                </div>
+                            </span>
+                        </button>
+                        
+                        <div class="secondary-actions">
+                            <!-- Features planned for future release -->
+                            <!-- <button class="secondary-btn disabled" id="batchBtn">
+                                <i class="fas fa-layer-group"></i> Batch Analysis (Coming Soon)
+                            </button>
+                            <button class="secondary-btn disabled" id="uploadBtn">
+                                <i class="fas fa-upload"></i> Upload Responses (Coming Soon)
+                            </button> -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Stats -->
+                <div class="quick-stats">
+                    <div class="quick-stat">
+                        <div class="quick-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div>
+                            <span class="quick-value" id="avgTime">15s</span>
+                            <span class="quick-label">Avg. Analysis</span>
+                        </div>
+                    </div>
+                    <div class="quick-stat">
+                        <div class="quick-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div>
+                            <span class="quick-value" id="successRate">99%</span>
+                            <span class="quick-label">Success Rate</span>
+                        </div>
+                    </div>
+                    <div class="quick-stat">
+                        <div class="quick-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <span class="quick-value" id="totalAnalyses">0</span>
+                            <span class="quick-label">Total Analyses</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section" id="results" style="display: none;">
+        <div class="results-header">
+            <h2>
+                <i class="fas fa-chart-network"></i>
+                Analysis Results
+                <span class="result-badge" id="resultStatus">Pending</span>
+            </h2>
+            <div class="result-actions">
+                <button class="export-btn" id="exportJson">
+                    <i class="fas fa-file-code"></i> JSON
+                </button>
+                <button class="export-btn" id="exportPdf">
+                    <i class="fas fa-file-pdf"></i> PDF
+                </button>
+                <button class="share-btn" id="shareResults">
+                    <i class="fas fa-share-alt"></i> Share
+                </button>
+            </div>
+        </div>
+        
+        <div class="results-container" id="resultsContainer">
+            <!-- Results will be loaded here -->
+            <div class="loading-results">
+                <div class="loading-spinner">
+                    <div class="spinner-ring"></div>
+                </div>
+                <p>Checking: word fluency, sentence flow, reasoning logic, and factual accuracy...</p>
+                <div class="progress-steps">
+                    <div class="step active">
+                        <span class="step-number">1</span>
+                        <span class="step-label">Token Analysis</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">2</span>
+                        <span class="step-label">Sentence Analysis</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <span class="step-label">Reasoning Analysis</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">4</span>
+                        <span class="step-label">Cross-Granular</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insights Section -->
+    <section class="insights-section" id="insights" style="display: none;">
+        <div class="insights-header">
+            <h2><i class="fas fa-lightbulb"></i> AI Insights & Patterns</h2>
+            <p class="insights-subtitle">Real patterns discovered from your analyses</p>
+        </div>
+        
+        <div class="insights-container" id="insightsContainer">
+            <!-- Insights will be loaded dynamically -->
+            <div class="loading-insights">
+                <div class="spinner-ring"></div>
+                <p>Loading insights from your analyses...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="history-section" id="history" style="display: none;">
+        <div class="history-header">
+            <h2><i class="fas fa-history"></i> Analysis History</h2>
+            <button class="clear-history" id="clearHistory">
+                <i class="fas fa-trash"></i> Clear All
+            </button>
+        </div>
+        
+        <div class="history-container" id="historyContainer">
+            <!-- History will be loaded dynamically -->
+            <div class="loading-history">
+                <div class="spinner-ring"></div>
+                <p>Loading your analysis history...</p>
+            </div>
+        </div>
+    </section>
+{% endblock %}
