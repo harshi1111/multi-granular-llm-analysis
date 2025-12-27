@@ -1,26 +1,32 @@
-# render-requirements.txt (lightweight for deployment)
+# Replace your requirements.txt with this:
 
-# Core web
+# Core Web Framework
 Flask==3.0.0
 Flask-CORS==4.0.0
 python-dotenv==1.0.0
-gunicorn==21.2.0
 
-# Essential ML (lightweight)
-numpy==1.24.3
-scipy==1.15.3
-scikit-learn==1.3.0
-
-# NLP (lightweight)
+# Your Existing Analysis Dependencies
+torch==2.0.1 --index-url https://download.pytorch.org/whl/cpu
+transformers==4.35.0
 spacy==3.7.2
 nltk==3.8.1
+sentence-transformers==2.2.2
+sympy==1.12
+pyyaml==6.0.1
+backoff==2.2.1
 
-# API clients
-requests==2.31.0
+# Data & serialization
+pandas==2.1.3
+numpy==1.24.3
+scikit-learn==1.3.0
+
+# API Clients
 google-generativeai==0.3.0
 wikipedia-api==0.6.2
 
-# Skip heavy packages for now
-# torch==2.0.1 --index-url https://download.pytorch.org/whl/cpu
-# transformers==4.35.0
-# sentence-transformers==2.2.2
+# Utilities
+requests==2.31.0
+ujson==5.8.0
+
+# Production server
+gunicorn==21.2.0
