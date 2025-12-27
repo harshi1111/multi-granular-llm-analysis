@@ -1,4 +1,4 @@
-# Multi‑Granular LLM Output Inspector
+# Multi‑Granular LLM Output System (NeuraScan AI)
 
 A web-based system that inspects a single LLM answer at multiple levels and shows **where the answer starts to fail**.  
 Instead of only saying “right or wrong”, it analyzes:
@@ -182,6 +182,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Hugging Face](https://huggingface.co/) for transformer models
 - [spaCy](https://spacy.io/) for NLP processing
    
+
 
 
 
