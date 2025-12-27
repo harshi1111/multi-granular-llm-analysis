@@ -1,0 +1,253 @@
+# Multi-Granular Analysis Configuration
+
+# Token analyzer configuration
+token_analyzer:
+  tokenizer_name: "gpt2"
+  window_size: 5
+  repetition_threshold: 0.5
+  stability_threshold: 0.4
+  vocabulary_shift_threshold: 0.8
+
+# Sentence analyzer configuration  
+sentence_analyzer:
+  model_name: "all-MiniLM-L6-v2"
+  coherence_threshold: 0.2
+  spacy_model: "en_core_web_sm"
+  coherence_drift_threshold: 0.3
+  start_end_similarity_threshold: 0.4
+
+# Reasoning analyzer configuration
+reasoning_analyzer:
+  reasoning_indicators: 
+    - "therefore"
+    - "thus"
+    - "hence"
+    - "so"
+    - "because"
+    - "since"
+    - "as a result"
+    - "consequently"
+    - "implies that"
+    - "which means"
+    - "it follows that"
+    - "we can conclude"
+    - "this shows that"
+  nli_model: "facebook/bart-large-mnli"
+  max_steps: 20
+  logic_threshold: 0.7
+  min_step_length: 5
+  max_step_length: 200
+  coherence_threshold: 0.4
+  enable_pattern_matching: true
+  enable_formal_logic: true
+  # Fallback for when NLI model is not available
+  fallback_model: "all-MiniLM-L6-v2"
+  step_min_length: 5  # Kept for backward compatibility
+  step_max_length: 100  # Kept for backward compatibility
+
+# Pattern matcher configuration
+pattern_matcher:
+  enable_pattern_matching: true
+  require_three_steps: true
+  enable_fallacy_detection: true
+  enable_syllogism_detection: true
+  confidence_threshold: 0.6
+  # Pattern categories to detect
+  pattern_categories:
+    - "syllogism"
+    - "modus_ponens"
+    - "modus_tollens"
+    - "hypothetical_syllogism"
+    - "disjunctive_syllogism"
+    - "dilemma"
+  # Fallacy patterns to detect
+  fallacies_to_detect:
+    - "affirming_the_consequent"
+    - "denying_the_antecedent"
+    - "false_dilemma"
+    - "hasty_generalization"
+    - "ad_hominem"
+    - "circular_reasoning"
+    - "straw_man"
+    - "slippery_slope"
+    - "appeal_to_authority"
+    - "false_causality"
+
+# Logic validator configuration
+logic_validator:
+  max_variables: 50
+  enable_propositional: true
+  enable_predicate: false
+  enable_first_order: false  # For more advanced logic
+  contradiction_threshold: 0.8
+  validation_timeout: 5  # seconds
+  # Propositional logic settings
+  propositional:
+    max_propositions: 20
+    enable_cnf_conversion: true
+    enable_satisfiability_check: true
+  # Predicate logic settings (if enabled)
+  predicate:
+    max_quantifiers: 10
+    enable_unification: false
+    enable_skolemization: false
+
+# Cross-granular analysis configuration
+cross_granular:
+  alignment_window: 3
+  propagation_threshold: 0.5
+  enable_visualization: true
+  enable_issue_tracking: true  # Track issues across granularities
+  enable_metric_correlation: true  # Analyze metric correlations
+
+# Semantic enhancer configuration
+semantic_enhancer:
+  fact_check_model: "facebook/bart-large-mnli"
+  nli_model: "facebook/bart-large-mnli"
+  entity_consistency_threshold: 0.7
+  enable_wikipedia: false  # Set to true if you want Wikipedia integration
+  contradiction_detection: true
+  enable_semantic_roles: true
+  # Entity extraction settings
+  entity_extraction:
+    enable_named_entities: true
+    enable_nominal_entities: true
+    enable_pronoun_resolution: true
+    enable_coreference: true
+  # Fact verification settings
+  fact_verification:
+    max_claims_per_sentence: 3
+    verification_confidence: 0.7
+    enable_external_sources: false  # External APIs for fact checking
+
+# Output configuration
+output:
+  save_intermediate_results: true
+  output_format: "json"
+  visualization_format: "html"
+  save_path: "./results/"
+  # Enhanced output options
+  save_pattern_analysis: true
+  save_formal_logic_proofs: true
+  save_semantic_graphs: true
+  generate_executive_summary: true
+  include_recommendations: true
+
+# Analysis thresholds
+thresholds:
+  # Severity levels
+  high_severity_threshold: 0.85  # Increased from 0.8
+  medium_severity_threshold: 0.65  # Increased from 0.5
+  low_severity_threshold: 0.4  # Increased from 0.3
+  
+  # Quality ratings
+  excellent_threshold: 0.8
+  good_threshold: 0.6
+  fair_threshold: 0.4
+  poor_threshold: 0.2
+  
+  # Specific metric thresholds
+  reasoning_quality_excellent: 0.8
+  reasoning_quality_good: 0.6
+  reasoning_quality_fair: 0.4
+  reasoning_quality_poor: 0.2
+  
+  # Formal logic thresholds
+  formal_validity_strong: 0.85
+  formal_validity_moderate: 0.65
+  formal_validity_weak: 0.45
+  
+  # NLI thresholds
+  nli_entailment_threshold: 0.8  # Added - higher confidence for entailment
+  nli_contradiction_threshold: 0.85  # Added - higher confidence for contradiction
+  nli_neutral_threshold: 0.5  # Added - threshold for neutral classification
+
+# Model settings
+model_settings:
+  # Batch sizes for processing
+  token_batch_size: 32
+  sentence_batch_size: 16
+  reasoning_batch_size: 8
+  pattern_matching_batch_size: 4
+  logic_validation_batch_size: 2
+  
+  # Timeout settings (seconds)
+  model_timeout: 30
+  max_retries: 3
+  pattern_matching_timeout: 10
+  logic_validation_timeout: 15
+  
+  # Cache settings
+  enable_cache: true
+  cache_expiry: 3600  # 1 hour in seconds
+  cache_pattern_results: true
+  cache_logic_results: true
+  
+  # Memory management
+  enable_memory_optimization: true
+  max_model_instances: 2
+  
+  # Add reasoning timeout and fallback settings
+  reasoning_timeout: 30
+  fallback_to_lightweight: true  # Use lightweight models if heavy ones timeout
+  use_cached_models: true
+
+# Performance optimization
+performance:
+  enable_parallel_processing: true
+  max_workers: 4
+  chunk_size: 1000  # characters for processing
+  memory_limit_mb: 1024
+  # Granular processing settings
+  parallel_granularities: true  # Process token/sentence/reasoning in parallel
+  enable_lazy_loading: true
+  # Resource allocation
+  token_analysis_priority: 1
+  sentence_analysis_priority: 2
+  reasoning_analysis_priority: 3  # Highest priority for reasoning
+  
+  # Add additional performance settings
+  enable_parallel_processing: true
+  max_workers: 2
+  chunk_size: 500  # Smaller chunks for long responses
+  memory_limit_mb: 512
+  timeout_settings:
+    reasoning_analysis_timeout: 30  # seconds
+    nli_inference_timeout: 5
+    max_reasoning_steps: 10  # Limit steps for long responses
+    max_propositions_to_check: 50  # Limit proposition comparisons
+
+# Debug and logging settings
+debug:
+  enable_debug_logging: false
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  save_debug_output: false
+  debug_output_path: "./debug/"
+  # Component-specific debugging
+  debug_token_analyzer: false
+  debug_sentence_analyzer: false
+  debug_reasoning_analyzer: true  # Enable for reasoning debugging
+  debug_pattern_matcher: false
+  debug_logic_validator: false
+
+# Feature toggles (enable/disable specific features)
+features:
+  # Core features
+  enable_token_analysis: true
+  enable_sentence_analysis: true
+  enable_reasoning_analysis: true
+  
+  # Advanced features - ENABLE SEMANTIC ENHANCEMENT!
+  enable_pattern_matching: false
+  enable_formal_logic: false
+  enable_semantic_enhancement: true  # ⚠️ ENABLE THIS FOR FACT CHECKING!
+  enable_cross_granular_analysis: true
+  
+  # Experimental features (might be unstable)
+  enable_experimental_patterns: false
+  enable_advanced_logic: false
+  enable_neural_theorem_proving: false
+  
+  # Integration features
+  enable_external_fact_checking: false
+  enable_knowledge_graph: false
