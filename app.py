@@ -21,11 +21,11 @@ import glob  # Added for file operations
 load_dotenv()
 
 # Import your existing modules
-from llm_query_module import LLMQueryModule
+from src.llm_query_module import LLMQueryModule
 
 # Try to import the real analyzer
 try:
-    from run_analysis import MultiGranularAnalyzer
+    from src.run_analysis import MultiGranularAnalyzer
     REAL_ANALYZER_AVAILABLE = True
 except ImportError as e:
     print(f"⚠️ Could not import MultiGranularAnalyzer: {e}")
@@ -686,3 +686,4 @@ if __name__ == '__main__':
     
 
     app.run(debug=True, host='0.0.0.0', port=5000)
+
