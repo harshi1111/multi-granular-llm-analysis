@@ -1,14 +1,13 @@
-# Multi‑Granular LLM Output System (NeuraScan AI)
+# NeuraScan AI — Understand Why an LLM Answer Failed
 
-A web-based system that inspects a single LLM answer at multiple levels and shows **where the answer starts to fail**.  
-Instead of only saying “right or wrong”, it analyzes:
+**NeuraScan AI** is a web-based system that helps teams understand **where and why a Large Language Model (LLM) response starts to fail**, instead of only labeling it as right or wrong.
 
-- Surface fluency (tokens)
-- Sentence flow
-- Logical reasoning
-- Factual correctness
+LLM answers often look fluent and confident while hiding:
+- Logical inconsistencies
+- Hallucinations
+- Subtle factual errors
 
-and visualizes all of them together in an interactive radar chart.
+NeuraScan analyzes a **single LLM response across multiple layers and pinpoints the first layer where failure begins**, helping engineers debug and improve LLM behavior faster.
 
 ---
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
@@ -16,7 +15,7 @@ and visualizes all of them together in an interactive radar chart.
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## 🎯 Live Demo
-> **Take a look**: 
+> **See NeuraScan analyze real LLM responses**: 
 
 https://github.com/user-attachments/assets/d12379dc-3ead-4a20-a1e8-defa7f7bc305
 
@@ -182,6 +181,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Hugging Face](https://huggingface.co/) for transformer models
 - [spaCy](https://spacy.io/) for NLP processing
    
+
 
 
 
